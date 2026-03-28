@@ -13,8 +13,13 @@ class DocumentDataIngestor:
         
 
     def ingest_document_to_bronze(self, file_path: str, dataset_name: str):
+        try:
             s3_key = dataset_name + '/' + os.path.basename(file_path)
 
             self.s3_client.upload_file(file_path, self.s3_bucket, s3_key)
 
             logging.info(f"Document {file_path} ingested successfully to s3://{self.s3_bucket}/{s3_key}")
+        
+        except Exception as e:
+            logging.error(f"Error ingesting document to bronze: {e}")
+            raise e
