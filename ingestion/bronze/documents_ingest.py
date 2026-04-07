@@ -18,3 +18,8 @@ def ingest_documents():
         aws_secret_access_key=config.aws_secret_access_key,
         aws_s3_endpoint=config.aws_s3_endpoint
     )
+    pdf_folder = os.path.join(config.base_data_dir, "documents")
+    for filename in os.listdir(pdf_folder):
+        if filename.endswith(".pdf"):
+            pdf_file = os.path.join(pdf_folder, filename)
+            ingestor.ingest_document_to_bronze(pdf_file, "documents")
