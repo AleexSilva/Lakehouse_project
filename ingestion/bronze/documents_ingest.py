@@ -23,3 +23,6 @@ def ingest_documents():
         if filename.endswith(".pdf"):
             pdf_file = os.path.join(pdf_folder, filename)
             ingestor.ingest_document_to_bronze(pdf_file, "documents")
+            
+if __name__ == "__main__":
+    ingest_documents()
