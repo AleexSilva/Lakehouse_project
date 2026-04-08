@@ -13,6 +13,8 @@ def ingest_ecoride():
     customer_file = path_manager.get_local_file_path("ecoride_customers", "csv")
     ingestor.ingest_file_to_bronze(customer_file, "ecoride", "customers", "csv")
 
+    sales_file = path_manager.get_local_file_path("ecoride_sales", "csv")
+    ingestor.ingest_file_to_bronze(sales_file, "ecoride", "sales", "csv")
 
 if __name__ == "__main__":
     ingest_ecoride()
