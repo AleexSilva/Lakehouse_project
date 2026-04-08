@@ -16,5 +16,11 @@ def ingest_ecoride():
     sales_file = path_manager.get_local_file_path("ecoride_sales", "csv")
     ingestor.ingest_file_to_bronze(sales_file, "ecoride", "sales", "csv")
 
+    vehicles_file = path_manager.get_local_file_path("ecoride_vehicles", "csv")
+    ingestor.ingest_file_to_bronze(vehicles_file, "ecoride", "vehicles", "csv")
+
+    reviews_file = path_manager.get_local_file_path("ecoride_product_reviews", "json")
+    ingestor.ingest_file_to_bronze(reviews_file, "ecoride", "product_reviews", "json")
+
 if __name__ == "__main__":
     ingest_ecoride()
