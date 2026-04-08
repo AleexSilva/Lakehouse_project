@@ -5,7 +5,10 @@ from ingestion.utils.data_ingestor import DataIngestor
 
 
 def ingest_ecoride():
-    pass
+    config = ConfigLoader()
+    spark = create_spark_session()
+    ingestor = DataIngestor(spark)
+    path_manager = FilePathManager(config.base_data_dir, config.lakehouse_s3_path)
 
 if __name__ == "__main__":
     ingest_ecoride()
